@@ -44,9 +44,15 @@ const Post = ({ post }) => {
           {post.title}
         </Typography>
         
+        {post.isSensitive && (
+          <Typography variant="caption" color="error" sx={{ fontWeight: 'bold' }}>
+              민감한 컨텐츠
+          </Typography>
+        )}
+
         <Box onClick={handleToggleBlur} style={postContentStyle}>
-          <Typography variant="body1" sx={{ color: 'text.primary', minHeight: '30px', fontSize: '0.9rem' }}>
-            {showSummary ? post.summary.replace(/\\n/g, '<br />') : post.content}
+          <Typography variant="body1" sx={{ color: 'text.primary', minHeight: '30px', fontSize: '0.9rem', whiteSpace: 'pre-line' }}>
+            {showSummary ? post.summary : post.content}
           </Typography>
           {blurred && (
             <Box sx={{ textAlign: 'center', fontWeight: 'bold', color: 'text.secondary', p: 2, backgroundColor: '#fafafa', borderRadius: 1 }}>

@@ -25,6 +25,11 @@ const Comment = ({ comment }) => {
           <Typography variant="caption" sx={{ color: 'text.secondary' }}>{comment.timestamp}</Typography>
         </Box>
       </Box>
+      {comment.isSensitive && (
+        <Typography variant="caption" color="error" sx={{ fontWeight: 'bold' }}>
+            민감한 컨텐츠
+        </Typography>
+      )}
       <Box onClick={handleToggleBlur} style={commentStyle}>
         <Typography variant="body2" sx={{ color: 'text.primary' }}>
           {comment.content}
